@@ -10,6 +10,7 @@ import { getList, removeFromList, updateTodo } from '../../helpers/util'
 })
 export class TodoListComponent implements OnInit {
     todos: ITodo[];
+    filterIsDone?: boolean;
 
     ngOnInit() {
         this.todos = getList();
@@ -19,10 +20,20 @@ export class TodoListComponent implements OnInit {
         removeFromList(todo);
         this.todos = getList();
     }
-    
-    toggleDone(todo: ITodo) {
-        todo.isDone =  !todo.isDone;
-        updateTodo(todo);                
+
+    toggleIsDone(todo: ITodo) {
+        todo.isDone = !todo.isDone;
+        updateTodo(todo);
         this.todos = getList();
+    }
+
+    toggleFilterIsDone(filterIsDone?:boolean) {
+        // ideally we should have original list, if we do filter on client side....  
+        // else backend filters data
+        this.todos = getList();
+
+        if (filterIsDone != null) {
+            this.todos = this.todos.filter(x => x.isDone === filterIsDone);
+        }        
     }
 }

@@ -2,6 +2,10 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {MatMenuModule} from '@angular/material/menu';
+import {MatButtonModule} from '@angular/material/button';
+
 
 
 import { AppComponent } from './app.component';
@@ -17,8 +21,12 @@ import { TodoListComponent } from './views/todo-list/todo-list.component';
   ],
   imports: [
     BrowserModule,
-    BrowserModule,
+    BrowserAnimationsModule,
     FormsModule,
+    
+    MatMenuModule,
+    MatButtonModule,
+
     RouterModule.forRoot([
       // Home Page
       {
