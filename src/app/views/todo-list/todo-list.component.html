@@ -3,5 +3,7 @@
   <li *ngFor="let todo of todos">
     {{todo.name}}
     <button (click)="removeTodo(todo)" class="deleteBtn">Delete</button>
+    <button *ngIf="todo.isDone" (click)="toggleDone(todo)" class="unDoneBtn">Un-done</button>
+    <button *ngIf="!todo.isDone" (click)="toggleDone(todo)" class="doneBtn">Done</button>
   </li>
 </ul>

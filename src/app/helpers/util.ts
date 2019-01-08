@@ -3,21 +3,22 @@ export const isEmpty = object => object && Object.keys(object).length === 0 || o
 
 export const addToList = name => {
     let list = getList();
-    
+
     if (!list) {
         list = [];
-    }    
-    
+    }
+
     let todo: ITodo = {
         _id: list.length,
-        name: name
-    }    
+        name: name,
+        isDone:false
+    }
     list.push(todo);
     updateTodoListStorage(list);
 }
 
 export const removeFromList = (todo: ITodo) => {
-    let list = <ITodo[]>getList();
+    let list = <ITodo[]>getList();    
     let i = list.findIndex(x => x._id == todo._id);
     if (i) {
         list.splice(i, 1);
@@ -25,7 +26,14 @@ export const removeFromList = (todo: ITodo) => {
     }
 }
 
-
+export const updateTodo = (todo: ITodo) => {
+    let list = <ITodo[]>getList();    
+    let i = list.findIndex(x => x._id == todo._id);
+    if (i) {
+        list[i] = todo;
+        updateTodoListStorage(list);
+    }
+}
 
 //TODO: dodati tip koji funkcija vraca a treba biti array ITodo
 export const getList = () => {

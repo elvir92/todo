@@ -20,6 +20,12 @@ import { TodoListComponent } from './views/todo-list/todo-list.component';
     BrowserModule,
     FormsModule,
     RouterModule.forRoot([
+      // Home Page
+      {
+        path: '',
+        redirectTo: '/list',
+        pathMatch: 'full'
+      },
       {
         path: 'list',
         component: TodoListComponent
